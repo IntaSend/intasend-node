@@ -16,22 +16,23 @@ var __extends = (this && this.__extends) || (function () {
 })();
 exports.__esModule = true;
 var requests_1 = require("./requests");
-var Wallet = /** @class */ (function (_super) {
-    __extends(Wallet, _super);
-    function Wallet() {
+var Collection = /** @class */ (function (_super) {
+    __extends(Collection, _super);
+    function Collection() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    Wallet.prototype.fund = function () {
+    Collection.prototype.charge = function () {
         this.secret_key = '';
         return this.send({
-            name: 'ABC',
-            wallet_type: 'WORKING',
-            currency: 'KES'
-        }, '/api/v1/wallets/');
+            first_name: 'FELIX',
+            last_name: 'Cheruiyot',
+            email: 'felix@intasend.com',
+            host: 'https://stackblitz.com',
+            amount: 10,
+            currency: 'KES',
+            api_ref: 'test'
+        }, '/api/v1/checkout/');
     };
-    Wallet.prototype.intraTransfer = function () {
-        console.log('Fake transfer wallet');
-    };
-    return Wallet;
+    return Collection;
 }(requests_1["default"]));
-exports["default"] = Wallet;
+exports["default"] = Collection;

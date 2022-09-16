@@ -1,9 +1,21 @@
-interface Wallet {
-    fund: Function,
+import RequestClient from './requests';
+
+class Wallet extends RequestClient {
+  fund() {
+    this.secret_key = '';
+    return this.send(
+      {
+        name: 'ABC',
+        wallet_type: 'WORKING',
+        currency: 'KES',
+      },
+      '/api/v1/wallets/'
+    );
+  }
+
+  intraTransfer() {
+    console.log('Fake transfer wallet');
+  }
 }
 
-function fundWallet(){
-    console.log("Fundedn wallet")
-}
-
-export default Wallet
+export default Wallet;
