@@ -9,5 +9,8 @@
   },
   "scripts": {
     "build": "tsc service.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^18.7.18"
   }
 }

@@ -22,7 +22,6 @@ var Wallet = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     Wallet.prototype.fund = function () {
-        this.secret_key = '';
         return this.send({
             name: 'ABC',
             wallet_type: 'WORKING',

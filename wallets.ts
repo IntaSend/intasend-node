@@ -2,7 +2,6 @@ import RequestClient from './requests';
 
 class Wallet extends RequestClient {
   fund() {
-    this.secret_key = '';
     return this.send(
       {
         name: 'ABC',

@@ -18,7 +18,11 @@ export default class IntaSend extends RequestClient {
   }
 }
 
-let service = new IntaSend('', '', true);
+let service = new IntaSend(
+  'ISPubKey_test_91ffc81a-8ac4-419e-8008-7091caa8d73f',
+  'ISSecretKey_test_82ab1e88-d97f-45b0-bec1-c59f6f4cbd2e',
+  true
+);
 // let collection = service.collection();
 // collection
 //   .charge()
@@ -34,8 +38,8 @@ let wallet = service.wallet();
 wallet
   .fund()
   .then((resp) => {
-    console.log(`statusCode: ${resp.status}`);
-    let resp_data = JSON.stringify(resp.data);
+    console.log(`statusCode: ${resp}`);
+    let resp_data = JSON.stringify(resp);
     console.log(`Successful funding: ${resp_data}`);
   })
   .catch((err) => {

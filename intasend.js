@@ -48,8 +48,8 @@ var wallet = service.wallet();
 wallet
     .fund()
     .then(function (resp) {
-    console.log("statusCode: ".concat(resp.status));
-    var resp_data = JSON.stringify(resp.data);
+    console.log("statusCode: ".concat(resp));
+    var resp_data = JSON.stringify(resp);
     console.log("Successful funding: ".concat(resp_data));
 })["catch"](function (err) {
     console.error("Funding error: ".concat(JSON.stringify(err)));
