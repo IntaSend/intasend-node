@@ -32,7 +32,7 @@ collection
     console.log(`Successful Charge: ${resp_data}`);
   })
   .catch((err) => {
-    console.error(`Charge error: ${JSON.stringify(err)}`);
+    console.error(`Charge error: ${err.message}`);
   });
 
 let wallet = service.wallet();
@@ -44,5 +44,5 @@ wallet
     console.log(`Successful funding: ${resp_data}`);
   })
   .catch((err) => {
-    console.error(`Funding error: ${JSON.stringify(err)}`);
+    console.error(`Funding error: ${err.message}`);
   });

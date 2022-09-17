@@ -41,7 +41,7 @@ collection
     var resp_data = JSON.stringify(resp);
     console.log("Successful Charge: ".concat(resp_data));
 })["catch"](function (err) {
-    console.error("Charge error: ".concat(JSON.stringify(err)));
+    console.error("Charge error: ".concat(err.message));
 });
 var wallet = service.wallet();
 wallet
@@ -51,5 +51,5 @@ wallet
     var resp_data = JSON.stringify(resp);
     console.log("Successful funding: ".concat(resp_data));
 })["catch"](function (err) {
-    console.error("Funding error: ".concat(JSON.stringify(err)));
+    console.error("Funding error: ".concat(err.message));
 });
