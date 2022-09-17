@@ -3,8 +3,8 @@ exports.__esModule = true;
 var https = require('https');
 var RequestClient = /** @class */ (function () {
     function RequestClient(publishable_key, secret_key, test_mode) {
-        this.prod_base_url = 'https://payment.intasend.com';
-        this.test_base_url = 'https://sandbox.intasend.com';
+        this.prod_base_url = 'payment.intasend.com';
+        this.test_base_url = 'sandbox.intasend.com';
         this.publishable_key = publishable_key;
         this.secret_key = secret_key;
         this.test_mode = test_mode;
@@ -24,7 +24,7 @@ var RequestClient = /** @class */ (function () {
                 payload['public_key'] = _this.publishable_key;
             }
             var options = {
-                host: base_url,
+                hostname: base_url,
                 port: 443,
                 path: service_path,
                 method: 'POST',
@@ -38,37 +38,24 @@ var RequestClient = /** @class */ (function () {
                     console.log("Server request failed: ".concat(res.statusCode));
                     res.resume();
                     reject(res);
+                    return;
                 }
                 console.log("Server request status code: ".concat(res.statusCode));
-                resolve(res);
+                res.on('data', function (data) {
+                    resolve(data);
+                    return;
+                });
             });
             var p = JSON.stringify(payload);
             console.log("REQUEST PAYLOAD: ".concat(p));
             req.on('error', function (err) {
                 console.log("totoal failuer: ".concat(err.message));
                 reject(err.message);
+                return;
             });
             req.write(JSON.stringify(payload));
             req.end();
         });
-        // send(payload: object, service_path: string) {
-        //   let base_url = this.prod_base_url;
-        //   if (this.test_mode) {
-        //     base_url = this.test_base_url;
-        //   }
-        //   let headers = { 'Content-Type': 'application/json' };
-        //   if (this.secret_key) {
-        //     headers['Authorization'] = `Bearer ${this.secret_key}`;
-        //   }
-        //   if (this.publishable_key) {
-        //     payload['public_key'] = this.publishable_key;
-        //   }
-        //   console.log(
-        //     `Request URL: ${base_url}${service_path}: ${JSON.stringify(headers)}`
-        //   );
-        //   return axios.post(`${base_url}${service_path}`, payload, {
-        //     headers: headers,
-        //   });
     };
     return RequestClient;
 }());

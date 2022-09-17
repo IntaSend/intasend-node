@@ -23,17 +23,18 @@ let service = new IntaSend(
   'ISSecretKey_test_82ab1e88-d97f-45b0-bec1-c59f6f4cbd2e',
   true
 );
-// let collection = service.collection();
-// collection
-//   .charge()
-//   .then((resp) => {
-//     console.log(`statusCode: ${resp.status}`);
-//     let resp_data = JSON.stringify(resp.data);
-//     console.log(`Successful Charge: ${resp_data}`);
-//   })
-//   .catch((err) => {
-//     console.error(`Charge error: ${JSON.stringify(err)}`);
-//   });
+let collection = service.collection();
+collection
+  .charge()
+  .then((resp) => {
+    console.log(`statusCode: ${resp}`);
+    let resp_data = JSON.stringify(resp);
+    console.log(`Successful Charge: ${resp_data}`);
+  })
+  .catch((err) => {
+    console.error(`Charge error: ${JSON.stringify(err)}`);
+  });
+
 let wallet = service.wallet();
 wallet
   .fund()

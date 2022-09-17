@@ -33,17 +33,16 @@ var IntaSend = /** @class */ (function (_super) {
 }(requests_1["default"]));
 exports["default"] = IntaSend;
 var service = new IntaSend('ISPubKey_test_91ffc81a-8ac4-419e-8008-7091caa8d73f', 'ISSecretKey_test_82ab1e88-d97f-45b0-bec1-c59f6f4cbd2e', true);
-// let collection = service.collection();
-// collection
-//   .charge()
-//   .then((resp) => {
-//     console.log(`statusCode: ${resp.status}`);
-//     let resp_data = JSON.stringify(resp.data);
-//     console.log(`Successful Charge: ${resp_data}`);
-//   })
-//   .catch((err) => {
-//     console.error(`Charge error: ${JSON.stringify(err)}`);
-//   });
+var collection = service.collection();
+collection
+    .charge()
+    .then(function (resp) {
+    console.log("statusCode: ".concat(resp));
+    var resp_data = JSON.stringify(resp);
+    console.log("Successful Charge: ".concat(resp_data));
+})["catch"](function (err) {
+    console.error("Charge error: ".concat(JSON.stringify(err)));
+});
 var wallet = service.wallet();
 wallet
     .fund()
