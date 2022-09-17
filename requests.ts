@@ -36,7 +36,9 @@ export default class RequestClient {
         if (res.statusCode !== 201 && res.statusCode !== 200) {
           console.log(`Resp Code: ${res.statusCode}`);
           res.resume();
-          reject(res);
+          res.on('data', (data) => {
+            reject(data);
+          });
           return;
         }
         console.log(`Resp Code: ${res.statusCode}`);

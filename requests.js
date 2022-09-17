@@ -35,7 +35,9 @@ var RequestClient = /** @class */ (function () {
                 if (res.statusCode !== 201 && res.statusCode !== 200) {
                     console.log("Resp Code: ".concat(res.statusCode));
                     res.resume();
-                    reject(res);
+                    res.on('data', function (data) {
+                        reject(data);
+                    });
                     return;
                 }
                 console.log("Resp Code: ".concat(res.statusCode));
