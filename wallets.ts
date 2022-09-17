@@ -4,7 +4,7 @@ class Wallet extends RequestClient {
   fund() {
     return this.send(
       {
-        name: 'ABC',
+        label: 'NodeJS-SDK-TEST',
         wallet_type: 'WORKING',
         currency: 'KES',
       },

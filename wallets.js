@@ -23,7 +23,7 @@ var Wallet = /** @class */ (function (_super) {
     }
     Wallet.prototype.fund = function () {
         return this.send({
-            name: 'ABC',
+            label: 'NodeJS-SDK-TEST',
             wallet_type: 'WORKING',
             currency: 'KES'
         }, '/api/v1/wallets/');
