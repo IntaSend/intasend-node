@@ -40,6 +40,5 @@ wallet
     console.log(`Funding response: ${resp}`);
   })
   .catch((err) => {
-    console.log(JSON.stringify(err));
     console.error(`Funding error: ${err}`);
   });
