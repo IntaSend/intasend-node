@@ -47,5 +47,6 @@ wallet
     .then(function (resp) {
     console.log("Funding response: ".concat(resp));
 })["catch"](function (err) {
+    console.log(JSON.stringify(err));
     console.error("Funding error: ".concat(err));
 });
