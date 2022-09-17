@@ -35,7 +35,7 @@ export default class RequestClient {
       console.log(`REQUEST OPTIONS: ${op}`);
       const req = https.request(options, (res) => {
         console.log(`statusCode: ${res.statusCode}`);
-        if (res.statusCode !== 201 || res.statusCode !== 200) {
+        if (res.statusCode !== 201 && res.statusCode !== 200) {
           console.log(`Server request failed: ${res.statusCode}`);
           res.resume();
           reject(res);

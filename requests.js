@@ -34,7 +34,7 @@ var RequestClient = /** @class */ (function () {
             console.log("REQUEST OPTIONS: ".concat(op));
             var req = https.request(options, function (res) {
                 console.log("statusCode: ".concat(res.statusCode));
-                if (res.statusCode !== 201 || res.statusCode !== 200) {
+                if (res.statusCode !== 201 && res.statusCode !== 200) {
                     console.log("Server request failed: ".concat(res.statusCode));
                     res.resume();
                     reject(res);
