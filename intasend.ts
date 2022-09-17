@@ -27,9 +27,7 @@ let collection = service.collection();
 collection
   .charge()
   .then((resp) => {
-    console.log(`statusCode: ${resp}`);
-    let resp_data = JSON.stringify(resp);
-    console.log(`Successful Charge: ${resp_data}`);
+    console.log(`Charge Resp: ${resp}`);
   })
   .catch((err) => {
     console.error(`Charge error: ${err}`);
@@ -39,9 +37,7 @@ let wallet = service.wallet();
 wallet
   .fund()
   .then((resp) => {
-    console.log(`statusCode: ${resp}`);
-    let resp_data = JSON.stringify(resp);
-    console.log(`Successful funding: ${resp_data}`);
+    console.log(`Funding response: ${resp}`);
   })
   .catch((err) => {
     console.error(`Funding error: ${err}`);

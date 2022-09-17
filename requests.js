@@ -30,26 +30,21 @@ var RequestClient = /** @class */ (function () {
                 method: 'POST',
                 headers: headers
             };
-            var op = JSON.stringify(options);
-            console.log("REQUEST OPTIONS: ".concat(op));
             var req = https.request(options, function (res) {
                 console.log("statusCode: ".concat(res.statusCode));
                 if (res.statusCode !== 201 && res.statusCode !== 200) {
-                    console.log("Server request failed: ".concat(res.statusCode));
+                    console.log("Resp Code: ".concat(res.statusCode));
                     res.resume();
                     reject(res);
                     return;
                 }
-                console.log("Server request status code: ".concat(res.statusCode));
+                console.log("Resp Code: ".concat(res.statusCode));
                 res.on('data', function (data) {
                     resolve(data);
                     return;
                 });
             });
-            var p = JSON.stringify(payload);
-            console.log("REQUEST PAYLOAD: ".concat(p));
             req.on('error', function (err) {
-                console.log("totoal failuer: ".concat(err.message));
                 reject(err.message);
                 return;
             });

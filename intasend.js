@@ -37,9 +37,7 @@ var collection = service.collection();
 collection
     .charge()
     .then(function (resp) {
-    console.log("statusCode: ".concat(resp));
-    var resp_data = JSON.stringify(resp);
-    console.log("Successful Charge: ".concat(resp_data));
+    console.log("Charge Resp: ".concat(resp));
 })["catch"](function (err) {
     console.error("Charge error: ".concat(err));
 });
@@ -47,9 +45,7 @@ var wallet = service.wallet();
 wallet
     .fund()
     .then(function (resp) {
-    console.log("statusCode: ".concat(resp));
-    var resp_data = JSON.stringify(resp);
-    console.log("Successful funding: ".concat(resp_data));
+    console.log("Funding response: ".concat(resp));
 })["catch"](function (err) {
     console.error("Funding error: ".concat(err));
 });

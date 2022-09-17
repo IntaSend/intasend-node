@@ -31,26 +31,21 @@ export default class RequestClient {
         method: 'POST',
         headers: headers,
       };
-      let op = JSON.stringify(options);
-      console.log(`REQUEST OPTIONS: ${op}`);
       const req = https.request(options, (res) => {
         console.log(`statusCode: ${res.statusCode}`);
         if (res.statusCode !== 201 && res.statusCode !== 200) {
-          console.log(`Server request failed: ${res.statusCode}`);
+          console.log(`Resp Code: ${res.statusCode}`);
           res.resume();
           reject(res);
           return;
         }
-        console.log(`Server request status code: ${res.statusCode}`);
+        console.log(`Resp Code: ${res.statusCode}`);
         res.on('data', (data) => {
           resolve(data);
           return;
         });
       });
-      let p = JSON.stringify(payload);
-      console.log(`REQUEST PAYLOAD: ${p}`);
       req.on('error', (err) => {
-        console.log(`totoal failuer: ${err.message}`);
         reject(err.message);
         return;
       });
