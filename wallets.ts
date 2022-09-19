@@ -1,15 +1,8 @@
 import RequestClient from './requests';
 
 class Wallet extends RequestClient {
-  fund() {
-    return this.send(
-      {
-        label: 'NodeJS-SDK-TEST',
-        wallet_type: 'WORKING',
-        currency: 'KES',
-      },
-      '/api/v1/wallets/'
-    );
+  create(payload: object) {
+    return this.send(payload, '/api/v1/wallets/');
   }
 
   intraTransfer() {

@@ -1,20 +1,16 @@
 import RequestClient from './requests';
 
 class Collection extends RequestClient {
-  charge() {
+  charge(payload: Object) {
     this.secret_key = '';
-    return this.send(
-      {
-        first_name: 'FELIX',
-        last_name: 'Cheruiyot',
-        email: 'felix@intasend.com',
-        host: 'https://stackblitz.com',
-        amount: 10,
-        currency: 'KES',
-        api_ref: 'test',
-      },
-      '/api/v1/checkout/'
-    );
+    return this.send(payload, '/api/v1/checkout/');
+  }
+
+  mpesaStkPush(payload: Object) {
+    this.secret_key = '';
+    payload['method'] = 'M-PESA';
+    payload['currency'] = 'KES';
+    return this.send(payload, '/api/v1/payment/collection/');
   }
 }
 
