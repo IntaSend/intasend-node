@@ -1,4 +1,4 @@
-# IntaSend-JS
+# IntaSend-Node
 
 IntaSend Payments SDK for Javascript and NodeJS users.
 
