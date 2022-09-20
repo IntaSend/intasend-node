@@ -21,17 +21,15 @@ var Collection = /** @class */ (function (_super) {
     function Collection() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    Collection.prototype.charge = function () {
+    Collection.prototype.charge = function (payload) {
         this.secret_key = '';
-        return this.send({
-            first_name: 'FELIX',
-            last_name: 'Cheruiyot',
-            email: 'felix@intasend.com',
-            host: 'https://stackblitz.com',
-            amount: 10,
-            currency: 'KES',
-            api_ref: 'test'
-        }, '/api/v1/checkout/');
+        return this.send(payload, '/api/v1/checkout/', 'POST');
+    };
+    Collection.prototype.mpesaStkPush = function (payload) {
+        this.secret_key = '';
+        payload['method'] = 'M-PESA';
+        payload['currency'] = 'KES';
+        return this.send(payload, '/api/v1/payment/collection/', 'POST');
     };
     return Collection;
 }(requests_1["default"]));

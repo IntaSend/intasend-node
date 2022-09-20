@@ -21,15 +21,23 @@ var Wallet = /** @class */ (function (_super) {
     function Wallet() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    Wallet.prototype.fund = function () {
-        return this.send({
-            label: 'NodeJS-SDK-TEST',
-            wallet_type: 'WORKING',
-            currency: 'KES'
-        }, '/api/v1/wallets/');
+    Wallet.prototype.list = function () {
+        return this.send(null, '/api/v1/wallets/', 'GET');
     };
-    Wallet.prototype.intraTransfer = function () {
-        console.log('Fake transfer wallet');
+    Wallet.prototype.create = function (payload) {
+        return this.send(payload, '/api/v1/wallets/', 'POST');
+    };
+    Wallet.prototype.intraTransfer = function (payload) {
+        return this.send(payload, '/api/v1/wallets/', 'POST');
+    };
+    Wallet.prototype.get = function (payload) {
+        return this.send(payload, "/api/v1/wallets/", 'POST');
+    };
+    Wallet.prototype.transactions = function (walletID) {
+        return this.send(null, "/api/v1/wallets/".concat(walletID, "/transactions/"), 'GET');
+    };
+    Wallet.prototype.fundMPesa = function (payload, walletID) {
+        return this.send(payload, "/api/v1/wallets/".concat(walletID, "/"), 'POST');
     };
     return Wallet;
 }(requests_1["default"]));

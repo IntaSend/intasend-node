@@ -9,8 +9,9 @@ var RequestClient = /** @class */ (function () {
         this.secret_key = secret_key;
         this.test_mode = test_mode;
     }
-    RequestClient.prototype.send = function (payload, service_path) {
+    RequestClient.prototype.send = function (payload, service_path, req_method) {
         var _this = this;
+        var method = req_method || 'POST';
         return new Promise(function (resolve, reject) {
             var base_url = _this.prod_base_url;
             if (_this.test_mode) {
@@ -27,7 +28,7 @@ var RequestClient = /** @class */ (function () {
                 hostname: base_url,
                 port: 443,
                 path: service_path,
-                method: 'POST',
+                method: method,
                 headers: headers
             };
             var req = https.request(options, function (res) {
@@ -50,7 +51,9 @@ var RequestClient = /** @class */ (function () {
                 reject(err.message);
                 return;
             });
-            req.write(JSON.stringify(payload));
+            if (payload) {
+                req.write(JSON.stringify(payload));
+            }
             req.end();
         });
     };
