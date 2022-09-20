@@ -2,7 +2,7 @@ import RequestClient from './requests';
 import Wallet from './wallets';
 import Collection from './collection';
 import Payouts from './payouts';
-import { sign } from 'crypto';
+import Refunds from './refunds';
 
 export default class IntaSend extends RequestClient {
   constructor(publishable_key: string, secret_key: string, test_mode: boolean) {
@@ -20,6 +20,9 @@ export default class IntaSend extends RequestClient {
   }
   payouts() {
     return new Payouts(this.publishable_key, this.secret_key, this.test_mode);
+  }
+  refunds() {
+    return new Refunds(this.publishable_key, this.secret_key, this.test_mode);
   }
 }
 
@@ -96,4 +99,19 @@ payouts
   })
   .catch((err) => {
     console.error(`Payouts error: ${err}`);
+  });
+
+let refunds = intasend.refunds();
+refunds
+  .create({
+    invoice: 'INVOICE-NUMBER',
+    amount: 200,
+    reason: 'UNAVAIBLE',
+    reason_details: 'Service unavailable',
+  })
+  .then((resp) => {
+    console.log(`Invoice response: ${resp}`);
+  })
+  .catch((err) => {
+    console.error(`Invoice error: ${err}`);
   });
