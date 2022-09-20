@@ -2,6 +2,7 @@ const https = require('https');
 
 export default class RequestClient {
   publishable_key: string;
+  private_key: string;
   secret_key: string;
   prod_base_url: string = 'payment.intasend.com';
   test_base_url: string = 'sandbox.intasend.com';
@@ -11,7 +12,8 @@ export default class RequestClient {
     this.secret_key = secret_key;
     this.test_mode = test_mode;
   }
-  send(payload: object, service_path: string) {
+  send(payload: object, service_path: string, req_method: string) {
+    let method = req_method || 'POST';
     return new Promise((resolve, reject) => {
       let base_url = this.prod_base_url;
       if (this.test_mode) {
@@ -28,7 +30,7 @@ export default class RequestClient {
         hostname: base_url,
         port: 443,
         path: service_path,
-        method: 'POST',
+        method: method,
         headers: headers,
       };
       const req = https.request(options, (res) => {
@@ -51,7 +53,9 @@ export default class RequestClient {
         reject(err.message);
         return;
       });
-      req.write(JSON.stringify(payload));
+      if (payload) {
+        req.write(JSON.stringify(payload));
+      }
       req.end();
     });
   }

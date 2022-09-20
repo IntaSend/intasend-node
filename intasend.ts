@@ -2,6 +2,7 @@ import RequestClient from './requests';
 import Wallet from './wallets';
 import Collection from './collection';
 import Payouts from './payouts';
+import { sign } from 'crypto';
 
 export default class IntaSend extends RequestClient {
   constructor(publishable_key: string, secret_key: string, test_mode: boolean) {
@@ -72,4 +73,27 @@ wallet
   })
   .catch((err) => {
     console.error(`Funding error: ${err}`);
+  });
+
+let payouts = intasend.payouts();
+payouts
+  .initiate({
+    label: 'NodeJS-SDK-TEST',
+    wallet_type: 'WORKING',
+    currency: 'KES',
+  })
+  .then((resp) => {
+    console.log(`Payouts response: ${resp}`);
+    // Approve payouts
+    payouts
+      .approve(resp, false)
+      .then((resp) => {
+        console.log(`Payouts approve: ${resp}`);
+      })
+      .catch((err) => {
+        console.error(`Payouts approve error: ${err}`);
+      });
+  })
+  .catch((err) => {
+    console.error(`Payouts error: ${err}`);
   });
