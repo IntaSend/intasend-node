@@ -8,8 +8,13 @@ class Wallet extends RequestClient {
     return this.send(payload, '/api/v1/wallets/', 'POST');
   }
 
-  intraTransfer(payload: Object) {
-    return this.send(payload, '/api/v1/wallets/', 'POST');
+  intraTransfer(sourceID: string, destinationID: string, amount: float, narrative: string) {
+    let payload = {
+      'wallet_id': destinationID,
+      'amount': amount,
+      'narrative': narrative
+    }
+    return this.send(payload, `/api/v1/wallets/${sourceID}/intra_transfer/`, 'POST');
   }
 
   get(payload: Object) {
