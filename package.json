@@ -1,7 +1,7 @@
 {
-  "name": "intasend-js",
+  "name": "intasend-node",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "intasend.js",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.27.2"
