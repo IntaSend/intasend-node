@@ -1,19 +1,14 @@
-import RequestClient from './requests';
+const RequestClient = require('./requests');
 
 class Wallet extends RequestClient {
   list() {
     return this.send(null, '/api/v1/wallets/', 'GET');
   }
-  create(payload: object) {
+  create(payload) {
     return this.send(payload, '/api/v1/wallets/', 'POST');
   }
 
-  intraTransfer(
-    sourceID: string,
-    destinationID: string,
-    amount: Number,
-    narrative: string
-  ) {
+  intraTransfer(sourceID, destinationID, amount, narrative) {
     let payload = {
       wallet_id: destinationID,
       amount: amount,
@@ -26,17 +21,17 @@ class Wallet extends RequestClient {
     );
   }
 
-  get(payload: Object) {
+  get(payload) {
     return this.send(payload, `/api/v1/wallets/`, 'POST');
   }
 
-  transactions(walletID: string) {
+  transactions(walletID) {
     return this.send(null, `/api/v1/wallets/${walletID}/transactions/`, 'GET');
   }
 
-  fundMPesa(payload: object, walletID: string) {
+  fundMPesa(payload, walletID) {
     return this.send(payload, `/api/v1/wallets/${walletID}/`, 'POST');
   }
 }
 
-export default Wallet;
+module.exports = Wallet;

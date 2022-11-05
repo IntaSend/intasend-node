@@ -1,19 +1,19 @@
-import RequestClient from './requests';
+const RequestClient = require('./requests');
 
 class Collection extends RequestClient {
-  charge(payload: Object) {
+  charge(payload) {
     this.secret_key = '';
     return this.send(payload, '/api/v1/checkout/', 'POST');
   }
 
-  mpesaStkPush(payload: Object) {
+  mpesaStkPush(payload) {
     this.secret_key = '';
     payload['method'] = 'M-PESA';
     payload['currency'] = 'KES';
     return this.send(payload, '/api/v1/payment/collection/', 'POST');
   }
 
-  status(invoiceID: String, checkoutID: String = '', signature: String = '') {
+  status(invoiceID, checkoutID = '', signature = '') {
     let payload = {
       invoice_id: invoiceID,
     };
@@ -25,4 +25,4 @@ class Collection extends RequestClient {
   }
 }
 
-export default Collection;
+module.exports = Collection;

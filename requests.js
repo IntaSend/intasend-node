@@ -1,18 +1,18 @@
 const https = require('https');
 
-export default class RequestClient {
-  publishable_key: string;
-  private_key: string;
-  secret_key: string;
-  prod_base_url: string = 'payment.intasend.com';
-  test_base_url: string = 'sandbox.intasend.com';
-  test_mode: boolean;
-  constructor(publishable_key: string, secret_key: string, test_mode: boolean) {
+class RequestClient {
+  publishable_key;
+  private_key;
+  secret_key;
+  prod_base_url = 'payment.intasend.com';
+  test_base_url = 'sandbox.intasend.com';
+  test_mode = true;
+  constructor(publishable_key, secret_key, test_mode) {
     this.publishable_key = publishable_key;
     this.secret_key = secret_key;
     this.test_mode = test_mode;
   }
-  send(payload: object, service_path: string, req_method: string) {
+  send(payload, service_path, req_method) {
     let method = req_method || 'POST';
     return new Promise((resolve, reject) => {
       let base_url = this.prod_base_url;
@@ -60,3 +60,5 @@ export default class RequestClient {
     });
   }
 }
+
+module.exports = RequestClient;

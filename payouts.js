@@ -1,9 +1,9 @@
 const crypto = require('crypto');
-const buffer = require('buffer');
-import RequestClient from './requests';
+const Buffer = require('buffer');
+const RequestClient = require('./requests');
 
 class Payouts extends RequestClient {
-  initiate(payload: Object) {
+  initiate(payload) {
     return this.send(payload, '/api/v1/send-money/initiate', 'POST');
   }
 
@@ -13,7 +13,7 @@ class Payouts extends RequestClient {
     return sign.toString('hex');
   }
 
-  approve(payload: Object, sign_nonce: boolean) {
+  approve(payload, sign_nonce) {
     payload['sign_nonce'] = sign_nonce;
     if (sign_nonce) {
       if (!this.private_key) {
@@ -24,9 +24,9 @@ class Payouts extends RequestClient {
     return this.send(payload, '/api/v1/send-money/approve/', 'POST');
   }
 
-  status(payload: Object) {
+  status(payload) {
     return this.send(payload, '/api/v1/send-money/status/', 'POST');
   }
 }
 
-export default Payouts;
+module.exports = Payouts;
