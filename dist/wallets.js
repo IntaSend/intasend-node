@@ -27,8 +27,13 @@ var Wallet = /** @class */ (function (_super) {
     Wallet.prototype.create = function (payload) {
         return this.send(payload, '/api/v1/wallets/', 'POST');
     };
-    Wallet.prototype.intraTransfer = function (payload) {
-        return this.send(payload, '/api/v1/wallets/', 'POST');
+    Wallet.prototype.intraTransfer = function (sourceID, destinationID, amount, narrative) {
+        var payload = {
+            wallet_id: destinationID,
+            amount: amount,
+            narrative: narrative
+        };
+        return this.send(payload, "/api/v1/wallets/".concat(sourceID, "/intra_transfer/"), 'POST');
     };
     Wallet.prototype.get = function (payload) {
         return this.send(payload, "/api/v1/wallets/", 'POST');

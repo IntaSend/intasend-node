@@ -31,6 +31,18 @@ var Collection = /** @class */ (function (_super) {
         payload['currency'] = 'KES';
         return this.send(payload, '/api/v1/payment/collection/', 'POST');
     };
+    Collection.prototype.status = function (invoiceID, checkoutID, signature) {
+        if (checkoutID === void 0) { checkoutID = ''; }
+        if (signature === void 0) { signature = ''; }
+        var payload = {
+            invoice_id: invoiceID
+        };
+        if (checkoutID && signature) {
+            payload['signature'] = signature;
+            payload['checkout_id'] = checkoutID;
+        }
+        return this.send(payload, '/api/v1/payment/status/', 'POST');
+    };
     return Collection;
 }(requests_1["default"]));
 exports["default"] = Collection;

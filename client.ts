@@ -4,7 +4,7 @@ class RequestClient {
   publishable_key: string;
   secret_key: string;
   prod_base_url: string = 'https://payment.intasend.com';
-  test_base_url: string = 'https://payment.intasend.com';
+  test_base_url: string = 'https://sandbox.intasend.com';
   test_mode: boolean;
   service_path: string;
   constructor(publishable_key: string, secret_key: string, test_mode: boolean) {

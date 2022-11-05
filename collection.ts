@@ -12,17 +12,14 @@ class Collection extends RequestClient {
     payload['currency'] = 'KES';
     return this.send(payload, '/api/v1/payment/collection/', 'POST');
   }
-  
-  status(invoiceID: String, checkoutID: String = None, signature:String = None) {
-    payload = {
-      "invoice_id": invoiceID,
-    }
-    if (checkout_id and signature) {
-      payload = {
-        "invoice_id": invoiceID,
-        "signature": signature,
-        "checkout_id": checkoutID
-      }
+
+  status(invoiceID: String, checkoutID: String = '', signature: String = '') {
+    let payload = {
+      invoice_id: invoiceID,
+    };
+    if (checkoutID && signature) {
+      payload['signature'] = signature;
+      payload['checkout_id'] = checkoutID;
     }
     return this.send(payload, '/api/v1/payment/status/', 'POST');
   }
