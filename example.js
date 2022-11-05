@@ -3,7 +3,8 @@ const IntaSend = require('./intasend');
 let intasend = new IntaSend(
   'ISPubKey_test_91ffc81a-8ac4-419e-8008-7091caa8d73f',
   'ISSecretKey_test_82ab1e88-d97f-45b0-bec1-c59f6f4cbd2e',
-  true
+  true,
+  'PrivateKey'
 );
 let collection = intasend.collection();
 collection
