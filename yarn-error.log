@@ -1,0 +1,48 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/bin/yarn publish
+
+PATH: 
+  /bin:/usr/bin:/usr/local/bin
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  16.14.2
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/-/user/org.couchdb.user:felixcheruiyot: socket hang up
+      at connResetException (https://node-qdgyee.w-credentialless.staticblitz.com/blitz.a0ea75dd36396805bd36e49d0b54d86602583e15.js:6:8256)
+      at TLSSocket.socketOnEnd (https://node-qdgyee.w-credentialless.staticblitz.com/blitz.a0ea75dd36396805bd36e49d0b54d86602583e15.js:6:1086873)
+      at EventEmitter.emit (https://node-qdgyee.w-credentialless.staticblitz.com/blitz.a0ea75dd36396805bd36e49d0b54d86602583e15.js:6:155690)
+      at endReadableNT (https://node-qdgyee.w-credentialless.staticblitz.com/blitz.a0ea75dd36396805bd36e49d0b54d86602583e15.js:6:660227)
+      at _0x161e95 (https://node-qdgyee.w-credentialless.staticblitz.com/blitz.a0ea75dd36396805bd36e49d0b54d86602583e15.js:15:147389)
+      at https://node-qdgyee.w-credentialless.staticblitz.com/blitz.a0ea75dd36396805bd36e49d0b54d86602583e15.js:15:147173
+
+npm manifest: 
+  {
+    "name": "intasend-node",
+    "version": "1.0.0",
+    "main": "intasend.js",
+    "license": "MIT",
+    "dependencies": {
+      "axios": "^0.27.2"
+    },
+    "devDependencies": {
+      "@types/node": "^18.7.18"
+    },
+    "author": {
+      "name": "Felix Cheruiyot",
+      "email": "felix@intasend.com",
+      "url": "https://intasend.com"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
