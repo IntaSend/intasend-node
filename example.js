@@ -20,72 +20,72 @@ collection
     console.log(`Charge Resp: ${resp}`);
   })
   .catch((err) => {
-    console.error(`Charge error: ${err}`);
+    console.log(`Charge error: ${err}`);
   });
 
-// collection
-//   .mpesaStkPush({
-//     phone_number: '254723890353',
-//     name: 'Felix Cheruiyot',
-//     email: 'felix@intasend.com',
-//     amount: 10,
-//     api_ref: 'test',
-//   })
-//   .then((resp) => {
-//     console.log(`Resp: ${resp}`);
-//   })
-//   .catch((err) => {
-//     console.error(`error: ${err}`);
-//   });
+collection
+  .mpesaStkPush({
+    phone_number: '254723890353',
+    name: 'Felix Cheruiyot',
+    email: 'felix@intasend.com',
+    amount: 10,
+    api_ref: 'test',
+  })
+  .then((resp) => {
+    console.log(`Resp: ${resp}`);
+  })
+  .catch((err) => {
+    console.error(`error: ${err}`);
+  });
 
-// let wallet = intasend.wallet();
-// wallet
-//   .create({
-//     label: 'NodeJS-SDK-TEST',
-//     wallet_type: 'WORKING',
-//     currency: 'KES',
-//   })
-//   .then((resp) => {
-//     console.log(`Funding response: ${resp}`);
-//   })
-//   .catch((err) => {
-//     console.error(`Funding error: ${err}`);
-//   });
+let wallet = intasend.wallet();
+wallet
+  .create({
+    label: 'NodeJS-SDK-TEST',
+    wallet_type: 'WORKING',
+    currency: 'KES',
+  })
+  .then((resp) => {
+    console.log(`Funding response: ${resp}`);
+  })
+  .catch((err) => {
+    console.error(`Funding error: ${err}`);
+  });
 
-// let payouts = intasend.payouts();
-// payouts
-//   .initiate({
-//     label: 'NodeJS-SDK-TEST',
-//     wallet_type: 'WORKING',
-//     currency: 'KES',
-//   })
-//   .then((resp) => {
-//     console.log(`Payouts response: ${resp}`);
-//     // Approve payouts
-//     payouts
-//       .approve(resp, false)
-//       .then((resp) => {
-//         console.log(`Payouts approve: ${resp}`);
-//       })
-//       .catch((err) => {
-//         console.error(`Payouts approve error: ${err}`);
-//       });
-//   })
-//   .catch((err) => {
-//     console.error(`Payouts error: ${err}`);
-//   });
+let payouts = intasend.payouts();
+payouts
+  .initiate({
+    label: 'NodeJS-SDK-TEST',
+    wallet_type: 'WORKING',
+    currency: 'KES',
+  })
+  .then((resp) => {
+    console.log(`Payouts response: ${resp}`);
+    // Approve payouts
+    payouts
+      .approve(resp, false)
+      .then((resp) => {
+        console.log(`Payouts approve: ${resp}`);
+      })
+      .catch((err) => {
+        console.error(`Payouts approve error: ${err}`);
+      });
+  })
+  .catch((err) => {
+    console.error(`Payouts error: ${err}`);
+  });
 
-// let refunds = intasend.refunds();
-// refunds
-//   .create({
-//     invoice: 'INVOICE-NUMBER',
-//     amount: 200,
-//     reason: 'UNAVAIBLE',
-//     reason_details: 'Service unavailable',
-//   })
-//   .then((resp) => {
-//     console.log(`Invoice response: ${resp}`);
-//   })
-//   .catch((err) => {
-//     console.error(`Invoice error: ${err}`);
-//   });
+let refunds = intasend.refunds();
+refunds
+  .create({
+    invoice: 'INVOICE-NUMBER',
+    amount: 200,
+    reason: 'UNAVAIBLE',
+    reason_details: 'Service unavailable',
+  })
+  .then((resp) => {
+    console.log(`Invoice response: ${resp}`);
+  })
+  .catch((err) => {
+    console.error(`Invoice error: ${err}`);
+  });
