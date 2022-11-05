@@ -1,8 +1,10 @@
 {
   "name": "intasend-node",
+  "description": "IntaSend official NodeJS SDK",
   "version": "1.0.0",
   "main": "intasend.js",
   "license": "MIT",
+  "repository": "https://github.com/IntaSend/intasend-node.git",
   "dependencies": {
     "axios": "^0.27.2"
   },
