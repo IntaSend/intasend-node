@@ -1,5 +1,13 @@
 const IntaSend = require('./intasend');
 
+// IMPORTANT:
+// =================================
+// The keys below have been added for example purposes only i.e for you to test easily
+// You can also obtain your test keys from https://sandbox.intasend.com
+// Here is our full API reference - https://developers.intasend.com/reference/ and documentation https://developers.intasend.com/docs/
+// In your code, do not place the keys and commit to code repositories.
+// We recommend using environment variables and 12Factor web approach. Please check it out here: https://12factor.net/
+
 const privateKey = `-----BEGIN RSA PRIVATE KEY-----
 MIIEpQIBAAKCAQEA6194XLgIl8lozJozjgDgGDX4StEpf8qF5AgG8SbuS9AiIril
 b4e/sWFDqy8Vvg87UY0SQ9Z2m/lVDQapWu1l/79CSkPQQPF8SEUF/NbQ9YrwnHIz
@@ -26,7 +34,7 @@ xa7/eKgZr6syntuDmRcOh8OG3yb40qlQavQMEfYmfydXwqDQwNiMLl1KTwBzJY17
 xReT0PsCgYEAwnIli+mpAvHqKrc2BGL3yQQX6ksGnGd8/Rb5r9d542ZJNe2LxOAj
 RXIy2TyqejdtgP6jW3NS0PE6cNL6exl2hCKGPZtMXu/fT4CH/vCNn0t3a02FuqyJ
 rXHiaVDBZNv4cJp10C6nxf2WRJ69ljzdj/Y+OWWEKvU6LKLOyJgt/yM=
------END RSA PRIVATE KEY-----`
+-----END RSA PRIVATE KEY-----`;
 
 let intasend = new IntaSend(
   'ISPubKey_test_91ffc81a-8ac4-419e-8008-7091caa8d73f',
@@ -35,7 +43,8 @@ let intasend = new IntaSend(
   privateKey
 );
 
-/*let collection = intasend.collection();
+// Create checkout page i.e payment collection link
+let collection = intasend.collection();
 collection
   .charge({
     first_name: 'FELIX',
@@ -53,11 +62,12 @@ collection
     console.log(`Charge error: ${err}`);
   });
 
+// How to trigger STK Push
 collection
   .mpesaStkPush({
-    phone_number: '254723890353',
-    name: 'Felix Cheruiyot',
-    email: 'felix@intasend.com',
+    phone_number: '25472xxxxxxx',
+    name: 'John Doe',
+    email: 'test@intasend.com',
     amount: 10,
     api_ref: 'test',
   })
@@ -68,6 +78,7 @@ collection
     console.error(`error: ${err}`);
   });
 
+// How to create and interact with Wallets
 let wallet = intasend.wallet();
 wallet
   .create({
@@ -81,22 +92,24 @@ wallet
   .catch((err) => {
     console.error(`Funding error: ${err}`);
   });
-*/
+
+// How to send money M-PESA (B2C, B2B, BANK, INTASEND P2P)
+// Learn more from our API reference on provider types and fields here - https://developers.intasend.com/reference/send-money_initiate_create
 let payouts = intasend.payouts();
 payouts
   .initiate({
-	  device_id: 'KR0DNYO',
+    device_id: 'KR0DNYO',
     provider: 'MPESA-B2B',
     currency: 'KES',
-	  transactions: [
-		{
-            "name": "ABC",
-            "account": 247247,
-            "amount": "100",
-            "account_type": "PayBill",
-            "account_reference": "11111111"
-        }
-	  ]
+    transactions: [
+      {
+        name: 'ABC',
+        account: 247247,
+        amount: '100',
+        account_type: 'PayBill',
+        account_reference: '11111111',
+      },
+    ],
   })
   .then((resp) => {
     console.log(`Payouts response: ${resp}`);
@@ -113,7 +126,8 @@ payouts
   .catch((err) => {
     console.error(`Payouts error: ${err}`);
   });
-/*
+
+// How to handle refunds
 let refunds = intasend.refunds();
 refunds
   .create({
@@ -128,4 +142,3 @@ refunds
   .catch((err) => {
     console.error(`Invoice error: ${err}`);
   });
- */

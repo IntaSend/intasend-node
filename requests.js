@@ -35,28 +35,25 @@ class RequestClient {
         headers: headers,
       };
       const req = https.request(options, (res) => {
-        console.log(`statusCode: ${res.statusCode}`);
         if (res.statusCode !== 201 && res.statusCode !== 200) {
-          console.log(`Resp Code: ${res.statusCode}`);
+          console.error(`IntaSend Request HTTP Error Code: ${res.statusCode}`);
           res.resume();
           res.on('data', (data) => {
             reject(data);
           });
           return;
         }
-	     var results = ''
-        console.log(`Resp Code: ${res.statusCode}`);
+        var results = '';
         res.on('data', (data) => {
-		results += data
+          results += data;
         });
-	      res.on('end', ()=>{
-		      if (results) {
-	      resolve(JSON.parse(results))
-		      }
-		      else {
-		      resolve({})}
-	      return
-	      })
+        res.on('end', () => {
+          if (results) {
+            resolve(JSON.parse(results));
+            return;
+          }
+          resolve({});
+        });
       });
       req.on('error', (err) => {
         reject(err.message);
