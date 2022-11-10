@@ -4,7 +4,7 @@ const RequestClient = require('./requests');
 
 class Payouts extends RequestClient {
   initiate(payload) {
-    return this.send(payload, '/api/v1/send-money/initiate', 'POST');
+    return this.send(payload, '/api/v1/send-money/initiate/', 'POST');
   }
 
   sign(nonce) {
