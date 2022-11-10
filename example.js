@@ -56,7 +56,7 @@ collection
     api_ref: 'test',
   })
   .then((resp) => {
-    console.log(`Charge Resp: ${resp}`);
+    console.log(`Charge Resp: ${JSON.stringify(resp)}`);
   })
   .catch((err) => {
     console.log(`Charge error: ${err}`);
@@ -72,7 +72,7 @@ collection
     api_ref: 'test',
   })
   .then((resp) => {
-    console.log(`Resp: ${resp}`);
+    console.log(`Resp: ${JSON.stringify(resp)}`);
   })
   .catch((err) => {
     console.error(`error: ${err}`);
@@ -87,7 +87,7 @@ wallet
     currency: 'KES',
   })
   .then((resp) => {
-    console.log(`Funding response: ${resp}`);
+    console.log(`Funding response: ${JSON.stringify(resp)}`);
   })
   .catch((err) => {
     console.error(`Funding error: ${err}`);
@@ -112,12 +112,12 @@ payouts
     ],
   })
   .then((resp) => {
-    console.log(`Payouts response: ${resp}`);
+    console.log(`Payouts response: ${JSON.stringify(resp)}`);
     // Approve payouts
     payouts
       .approve(resp, true)
       .then((resp) => {
-        console.log(`Payouts approve: ${resp}`);
+        console.log(`Payouts approve: ${JSON.stringify(resp)}`);
       })
       .catch((err) => {
         console.error(`Payouts approve error: ${err}`);
