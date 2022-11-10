@@ -44,11 +44,19 @@ class RequestClient {
           });
           return;
         }
+	     var results = ''
         console.log(`Resp Code: ${res.statusCode}`);
         res.on('data', (data) => {
-          resolve(data);
-          return;
+		results += data
         });
+	      res.on('end', ()=>{
+		      if (results) {
+	      resolve(JSON.parse(results))
+		      }
+		      else {
+		      resolve({})}
+	      return
+	      })
       });
       req.on('error', (err) => {
         reject(err.message);
