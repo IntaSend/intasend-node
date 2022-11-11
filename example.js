@@ -79,8 +79,8 @@ collection
   });
 
 // How to create and interact with Wallets
-let wallet = intasend.wallet();
-wallet
+let wallets = intasend.wallets();
+wallets
   .create({
     label: 'NodeJS-SDK-TEST',
     wallet_type: 'WORKING',
