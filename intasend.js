@@ -8,7 +8,7 @@ class IntaSend extends RequestClient {
   constructor(publishable_key, secret_key, test_mode, private_key) {
     super(publishable_key, secret_key, test_mode, private_key);
   }
-  wallet() {
+  wallets() {
     return new Wallet(this.publishable_key, this.secret_key, this.test_mode);
   }
   collection() {
