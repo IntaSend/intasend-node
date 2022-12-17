@@ -10,7 +10,7 @@ const IntaSend = require('./intasend');
 
 let intasend = new IntaSend(
   'ISPubKey_test_91ffc81a-8ac4-419e-8008-7091caa8d73f',
-  'ISSecretKey_test_7a8d06c8-e3b2-4bff-9f9d-ac0807fa9880',
+  'ISSecretKey_test_15515fe9-fb5d-4362-970e-625532df8181',
   true
 );
 
