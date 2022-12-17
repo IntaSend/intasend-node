@@ -3,15 +3,13 @@ const https = require('https');
 class RequestClient {
   publishable_key;
   secret_key;
-  private_key;
   prod_base_url = 'payment.intasend.com';
   test_base_url = 'sandbox.intasend.com';
   test_mode = true;
-  constructor(publishable_key, secret_key, test_mode, private_key) {
+  constructor(publishable_key, secret_key, test_mode) {
     this.publishable_key = publishable_key;
     this.secret_key = secret_key;
     this.test_mode = test_mode;
-    this.private_key = private_key;
   }
   send(payload, service_path, req_method) {
     let method = req_method || 'POST';

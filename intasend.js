@@ -5,8 +5,8 @@ const Payouts = require('./payouts');
 const Refunds = require('./refunds');
 
 class IntaSend extends RequestClient {
-  constructor(publishable_key, secret_key, test_mode, private_key) {
-    super(publishable_key, secret_key, test_mode, private_key);
+  constructor(publishable_key, secret_key, test_mode) {
+    super(publishable_key, secret_key, test_mode);
   }
   wallets() {
     return new Wallet(this.publishable_key, this.secret_key, this.test_mode);
@@ -19,12 +19,7 @@ class IntaSend extends RequestClient {
     );
   }
   payouts() {
-    return new Payouts(
-      this.publishable_key,
-      this.secret_key,
-      this.test_mode,
-      this.private_key
-    );
+    return new Payouts(this.publishable_key, this.secret_key, this.test_mode);
   }
   refunds() {
     return new Refunds(this.publishable_key, this.secret_key, this.test_mode);
