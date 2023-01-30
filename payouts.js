@@ -24,6 +24,11 @@ class Payouts extends RequestClient {
     payload['provider'] = 'INTASEND';
     return this.initiate(payload);
   }
+  
+  airtime(payload) {
+    payload['provider'] = 'AIRTIME';
+    return this.initiate(payload);
+  }
 
   approve(payload) {
     return this.send(payload, '/api/v1/send-money/approve/', 'POST');
