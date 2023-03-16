@@ -7,10 +7,9 @@ class Collection extends RequestClient {
   }
 
   mpesaStkPush(payload) {
-    this.secret_key = '';
     payload['method'] = 'M-PESA';
     payload['currency'] = 'KES';
-    return this.send(payload, '/api/v1/payment/collection/', 'POST');
+    return this.send(payload, '/api/v1/payment/mpesa-stk-push/', 'POST');
   }
 
   status(invoiceID, checkoutID = '', signature = '') {
