@@ -23,6 +23,7 @@ class RequestClient {
         headers['Authorization'] = `Bearer ${this.secret_key}`;
       }
       if (this.publishable_key) {
+        headers['INTASEND_PUBLIC_API_KEY'] = this.publishable_key;
         payload['public_key'] = this.publishable_key;
       }
       const options = {
