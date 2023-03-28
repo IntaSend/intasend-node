@@ -15,6 +15,7 @@ class Collection extends RequestClient {
   status(invoiceID, checkoutID = '', signature = '') {
     let payload = {
       invoice_id: invoiceID,
+      public_key: this.publishable_key
     };
     if (checkoutID && signature) {
       payload['signature'] = signature;
