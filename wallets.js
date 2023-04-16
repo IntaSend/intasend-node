@@ -21,8 +21,8 @@ class Wallet extends RequestClient {
     );
   }
 
-  get(payload) {
-    return this.send(payload, `/api/v1/wallets/`, 'POST');
+  get(walletID) {
+    return this.send(null, `/api/v1/wallets/${walletID}/`, 'GET');
   }
 
   transactions(walletID) {
