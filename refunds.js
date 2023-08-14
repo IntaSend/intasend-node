@@ -2,7 +2,7 @@ const RequestClient = require('./requests');
 
 class Refunds extends RequestClient {
   list() {
-    return this.send(null, '/api/v1/chargebacks/', 'GET');
+    return this.send({}, '/api/v1/chargebacks/', 'GET');
   }
 
   create(payload) {
@@ -10,7 +10,7 @@ class Refunds extends RequestClient {
   }
 
   get(chargebackID) {
-    return this.send(null, `/api/v1/chargebacks/${chargebackID}/`, 'GET');
+    return this.send({}, `/api/v1/chargebacks/${chargebackID}/`, 'GET');
   }
 }
 
