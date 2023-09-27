@@ -29,8 +29,15 @@ class Wallet extends RequestClient {
     return this.send({}, `/api/v1/wallets/${walletID}/transactions/`, 'GET');
   }
 
-  fundMPesa(payload, walletID) {
-    return this.send(payload, `/api/v1/wallets/${walletID}/`, 'POST');
+  fundMPesa(payload) {
+    payload['method'] = 'M-PESA';
+    payload['currency'] = 'KES';
+    return this.send(payload, '/api/v1/payment/mpesa-stk-push/', 'POST');
+  }
+
+  fundCheckout(payload) {
+    this.secret_key = '';
+    return this.send(payload, '/api/v1/checkout/', 'POST');
   }
 }
 
