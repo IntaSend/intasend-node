@@ -3,7 +3,7 @@
   "description": "IntaSend official NodeJS SDK",
   "version": "1.0.7",
   "main": "intasend.js",
-  "license": "MIT",
+  "license": "GNU Affero General Public License v3.0",
   "repository": "https://github.com/IntaSend/intasend-node.git",
   "devDependencies": {
     "@types/node": "^18.7.18"
