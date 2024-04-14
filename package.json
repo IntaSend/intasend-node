@@ -1,7 +1,7 @@
 {
   "name": "intasend-node",
   "description": "IntaSend official NodeJS SDK",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "main": "./dist/intasend.js",
   "types": "./dist/intasend.d.ts",
   "files": [
