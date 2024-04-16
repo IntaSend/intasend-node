@@ -8,7 +8,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsc && cp ./src/**.js ./dist/"
+    "build": "tsc"
   },
   "license": "GNU Affero General Public License v3.0",
   "repository": "https://github.com/IntaSend/intasend-node.git",
