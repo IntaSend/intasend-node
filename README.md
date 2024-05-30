@@ -4,7 +4,7 @@
 
 ## Installation
 
-    yarn install intasend-node
+    yarn add intasend-node
 
 or using NPM
 
