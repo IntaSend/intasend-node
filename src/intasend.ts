@@ -41,3 +41,13 @@ class IntaSend extends RequestClient {
 }
 
 export default IntaSend;
+
+// CommonJS backward compatibility: allows `const IntaSend = require('intasend-node')`
+// without needing `.default`. Named exports are attached as properties.
+module.exports = IntaSend;
+module.exports.default = IntaSend;
+module.exports.RequestClient = RequestClient;
+module.exports.Wallet = Wallet;
+module.exports.Collection = Collection;
+module.exports.Payouts = Payouts;
+module.exports.Refunds = Refunds;
