@@ -1,17 +1,18 @@
-const RequestClient = require('./requests');
+import RequestClient from './requests';
+import { CreateRefundPayload } from './types';
 
 class Refunds extends RequestClient {
-  list() {
+  list(): Promise<any> {
     return this.send({}, '/api/v1/chargebacks/', 'GET');
   }
 
-  create(payload) {
+  create(payload: CreateRefundPayload): Promise<any> {
     return this.send(payload, '/api/v1/chargebacks/', 'POST');
   }
 
-  get(chargebackID) {
+  get(chargebackID: string): Promise<any> {
     return this.send({}, `/api/v1/chargebacks/${chargebackID}/`, 'GET');
   }
 }
 
-module.exports = Refunds;
+export default Refunds;

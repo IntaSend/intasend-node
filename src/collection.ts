@@ -1,21 +1,26 @@
-const RequestClient = require('./requests');
+import RequestClient from './requests';
+import { ChargePayload, MpesaStkPushPayload } from './types';
 
 class Collection extends RequestClient {
-  charge(payload) {
+  charge(payload: ChargePayload): Promise<any> {
     this.secret_key = '';
     return this.send(payload, '/api/v1/checkout/', 'POST');
   }
 
-  mpesaStkPush(payload) {
+  mpesaStkPush(payload: MpesaStkPushPayload): Promise<any> {
     payload['method'] = 'M-PESA';
     payload['currency'] = 'KES';
     return this.send(payload, '/api/v1/payment/mpesa-stk-push/', 'POST');
   }
 
-  status(invoiceID, checkoutID = '', signature = '') {
+  status(
+    invoiceID: string,
+    checkoutID: string = '',
+    signature: string = ''
+  ): Promise<any> {
     this.secret_key = '';
-    let payload = {
-      invoice_id: invoiceID
+    const payload: Record<string, string> = {
+      invoice_id: invoiceID,
     };
     if (checkoutID && signature) {
       payload['signature'] = signature;
@@ -25,4 +30,4 @@ class Collection extends RequestClient {
   }
 }
 
-module.exports = Collection;
+export default Collection;

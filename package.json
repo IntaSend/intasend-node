@@ -8,12 +8,16 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsc"
+    "build": "tsc -p tsconfig.build.json",
+    "test": "jest"
   },
   "license": "GNU Affero General Public License v3.0",
   "repository": "https://github.com/IntaSend/intasend-node.git",
   "devDependencies": {
+    "@types/jest": "^30.0.0",
     "@types/node": "^18.7.18",
+    "jest": "^30.2.0",
+    "ts-jest": "^29.4.6",
     "typescript": "^5.4.5"
   },
   "author": {
