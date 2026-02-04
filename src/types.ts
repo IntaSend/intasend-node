@@ -36,6 +36,7 @@ export type PayoutProvider =
 export interface PayoutPayload {
   provider?: PayoutProvider;
   currency: string;
+  requires_approval?: 'YES' | 'NO';
   transactions: PayoutTransaction[];
   [key: string]: unknown;
 }

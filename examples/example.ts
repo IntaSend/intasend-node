@@ -67,10 +67,12 @@ wallets
 // How to send money M-PESA (B2C, B2B, BANK, INTASEND P2P)
 // Learn more from our API reference on provider types and fields here - https://developers.intasend.com/reference/send-money_initiate_create
 const payouts = intasend.payouts();
+const requiresApproval = 'YES';
 payouts
   .initiate({
     provider: 'MPESA-B2B',
     currency: 'KES',
+    requires_approval: requiresApproval, // Set to 'NO' if you want the transaction to go through without calling the approve method
     transactions: [
       {
         name: 'ABC',
@@ -84,14 +86,16 @@ payouts
   .then((resp) => {
     console.log(`Payouts response: ${JSON.stringify(resp)}`);
     // Approve payouts
-    payouts
-      .approve(resp)
-      .then((resp) => {
-        console.log(`Payouts approve: ${JSON.stringify(resp)}`);
-      })
-      .catch((err) => {
-        console.error(`Payouts approve error: ${err}`);
-      });
+    if (requiresApproval === 'YES') {
+      payouts
+        .approve(resp)
+        .then((resp) => {
+          console.log(`Payouts approve: ${JSON.stringify(resp)}`);
+        })
+        .catch((err) => {
+          console.error(`Payouts approve error: ${err}`);
+        });
+    }
   })
   .catch((err) => {
     console.error(`Payouts error: ${err}`);
