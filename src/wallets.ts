@@ -1,15 +1,26 @@
-const RequestClient = require('./requests');
+import RequestClient from './requests';
+import {
+  CreateWalletPayload,
+  FundMpesaPayload,
+  FundCheckoutPayload,
+} from './types';
 
 class Wallet extends RequestClient {
-  list() {
+  list(): Promise<any> {
     return this.send({}, '/api/v1/wallets/', 'GET');
   }
-  create(payload) {
+
+  create(payload: CreateWalletPayload): Promise<any> {
     return this.send(payload, '/api/v1/wallets/', 'POST');
   }
 
-  intraTransfer(sourceID, destinationID, amount, narrative) {
-    let payload = {
+  intraTransfer(
+    sourceID: string,
+    destinationID: string,
+    amount: number,
+    narrative: string
+  ): Promise<any> {
+    const payload = {
       wallet_id: destinationID,
       amount: amount,
       narrative: narrative,
@@ -21,24 +32,24 @@ class Wallet extends RequestClient {
     );
   }
 
-  get(walletID) {
+  get(walletID: string): Promise<any> {
     return this.send({}, `/api/v1/wallets/${walletID}/`, 'GET');
   }
 
-  transactions(walletID) {
+  transactions(walletID: string): Promise<any> {
     return this.send({}, `/api/v1/wallets/${walletID}/transactions/`, 'GET');
   }
 
-  fundMPesa(payload) {
+  fundMPesa(payload: FundMpesaPayload): Promise<any> {
     payload['method'] = 'M-PESA';
     payload['currency'] = 'KES';
     return this.send(payload, '/api/v1/payment/mpesa-stk-push/', 'POST');
   }
 
-  fundCheckout(payload) {
+  fundCheckout(payload: FundCheckoutPayload): Promise<any> {
     this.secret_key = '';
     return this.send(payload, '/api/v1/checkout/', 'POST');
   }
 }
 
-module.exports = Wallet;
+export default Wallet;

@@ -1,9 +1,13 @@
 {
-  "include": ["src/**/*"],
   "compilerOptions": {
-    "allowJs": true,
+    "target": "ES2018",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
     "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
     "outDir": "dist",
-    "declarationMap": true
+    "types": ["node", "jest"]
   }
 }
